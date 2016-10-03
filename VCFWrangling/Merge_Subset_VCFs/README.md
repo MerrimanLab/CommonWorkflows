@@ -9,7 +9,7 @@ This repository includes 7 example VCF files (chromosome 19) from the 1000 Genom
 
 ![Image of example VCFs](https://github.com/MerrimanLab/CommonWorkflows/blob/master/VCFWrangling/Merge_Subset_VCFs/ExampleVCFs.png)  
 
-We need to compress these files using ```bgzip```, and the index them using ```tabix```:
+We need to compress these files using ```bgzip```, and index them using ```tabix```:
 
 ```
 parallel bgzip ::: *vcf
@@ -22,7 +22,7 @@ This results in 7 ```vcf.gz``` files and 7 corresponding ```.tbi``` files:
 
 ## Step 2: Create BED file for our gene regions    
 
-You can subset VCF files either directly in the command line using ```bcftools merge -r```, or you can create a BED file (CHR, START, END) to subset multiple regions with ```bcftools merge -R <bed_file.bed>```. We are going to use a BED file to extract 3 obseity-related genes from each individual VCF file. The genes have the following coordinates:
+You can subset VCF files either directly in the command line using ```bcftools merge -r```, or you can create a BED file (CHR, START, END) to subset multiple regions with ```bcftools merge -R <bed_file.bed>```. We are going to use a BED file to extract 3 obesity-related genes from each individual VCF file. The genes have the following coordinates:
 
 | Gene | CHR | Start (bp) | End (bp) |  
 | :--- | --- | ---------- | -------- |  
