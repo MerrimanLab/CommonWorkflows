@@ -7,7 +7,7 @@ In this workflow we will take 7 individual VCF files, extract 3 regions of inter
 
 This repository includes 7 example VCF files (chromosome 19) from the 1000 Genomes project to work with:  
 
-![Image of example VCFs]()  
+![Image of example VCFs](https://github.com/MerrimanLab/CommonWorkflows/blob/master/VCFWrangling/Merge_Subset_VCFs/ExampleVCFs.png)  
 
 We need to compress these files using ```bgzip```, and the index them using ```tabix```:
 
@@ -18,7 +18,7 @@ parallel tabix -p vcf ::: *vcf.gz
 
 This results in 7 ```vcf.gz``` files and 7 corresponding ```.tbi``` files:
 
-![Image of compressed VCFs]()  
+![Image of compressed VCFs](https://github.com/MerrimanLab/CommonWorkflows/blob/master/VCFWrangling/Merge_Subset_VCFs/ExampleCompressedVCF.png)  
 
 ## Step 2: Create BED file for our gene regions    
 
@@ -32,7 +32,7 @@ You can subset VCF files either directly in the command line using ```bcftools m
 
 We will create a file, ```genes.bed```, which contains these 3 regions (plus a little padding around them):
 
-![Image of BED file]()  
+![Image of BED file](https://github.com/MerrimanLab/CommonWorkflows/blob/master/VCFWrangling/Merge_Subset_VCFs/ExampleBEDFile.png)  
 
 Notes:  
 
@@ -50,7 +50,7 @@ bcftools merge -R genes.bed *vcf.gz > combined_genotypes.vcf
 
 This will create a new ```combined_genotypes.vcf``` file as shown below:
 
-![Image Combined VCF]()  
+![Image Combined VCF](https://github.com/MerrimanLab/CommonWorkflows/blob/master/VCFWrangling/Merge_Subset_VCFs/ExampleCombinedVCF.png)  
 
 As you can see, the final VCF file contains a column for each individual.
 
